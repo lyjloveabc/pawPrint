@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thor.pawPrint.dao.mapper.GoodsDOMapper" >
+  <resultMap id="BaseResultMap" type="com.thor.pawPrint.bean.entity.GoodsDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="chinese_name" property="chineseName" jdbcType="VARCHAR" />
+    <result column="english_name" property="englishName" jdbcType="VARCHAR" />
+    <result column="latin_name" property="latinName" jdbcType="VARCHAR" />
+    <result column="sales_name" property="salesName" jdbcType="VARCHAR" />
+    <result column="origin" property="origin" jdbcType="VARCHAR" />
+    <result column="color" property="color" jdbcType="VARCHAR" />
+    <result column="branches_length" property="branchesLength" jdbcType="VARCHAR" />
+    <result column="unit_price" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="specs" property="specs" jdbcType="VARCHAR" />
+    <result column="inventory" property="inventory" jdbcType="INTEGER" />
+    <result column="is_shelves" property="isShelves" jdbcType="CHAR" />
+    <result column="country_of_origin" property="countryOfOrigin" jdbcType="VARCHAR" />
+    <result column="distribution" property="distribution" jdbcType="VARCHAR" />
+    <result column="other_name" property="otherName" jdbcType="VARCHAR" />
+    <result column="curing_description" property="curingDescription" jdbcType="VARCHAR" />
+    <result column="distribution_description" property="distributionDescription" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.thor.pawPrint.bean.entity.GoodsDO" extends="BaseResultMap" >
+    <result column="images" property="images" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_create, gmt_modify, code, chinese_name, english_name, latin_name, sales_name, 
+    origin, color, branches_length, unit_price, specs, inventory, is_shelves, country_of_origin, 
+    distribution, other_name, curing_description, distribution_description
+  </sql>
+  <sql id="Blob_Column_List" >
+    images
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thor.pawPrint.bean.entity.GoodsDO" >
+    insert into goods (id, gmt_create, gmt_modify, 
+      code, chinese_name, english_name, 
+      latin_name, sales_name, origin, 
+      color, branches_length, unit_price, 
+      specs, inventory, is_shelves, 
+      country_of_origin, distribution, other_name, 
+      curing_description, distribution_description, 
+      images)
+    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR}, #{chineseName,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, 
+      #{latinName,jdbcType=VARCHAR}, #{salesName,jdbcType=VARCHAR}, #{origin,jdbcType=VARCHAR}, 
+      #{color,jdbcType=VARCHAR}, #{branchesLength,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, 
+      #{specs,jdbcType=VARCHAR}, #{inventory,jdbcType=INTEGER}, #{isShelves,jdbcType=CHAR}, 
+      #{countryOfOrigin,jdbcType=VARCHAR}, #{distribution,jdbcType=VARCHAR}, #{otherName,jdbcType=VARCHAR}, 
+      #{curingDescription,jdbcType=VARCHAR}, #{distributionDescription,jdbcType=VARCHAR}, 
+      #{images,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thor.pawPrint.bean.entity.GoodsDO" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="chineseName != null" >
+        chinese_name,
+      </if>
+      <if test="englishName != null" >
+        english_name,
+      </if>
+      <if test="latinName != null" >
+        latin_name,
+      </if>
+      <if test="salesName != null" >
+        sales_name,
+      </if>
+      <if test="origin != null" >
+        origin,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="branchesLength != null" >
+        branches_length,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="specs != null" >
+        specs,
+      </if>
+      <if test="inventory != null" >
+        inventory,
+      </if>
+      <if test="isShelves != null" >
+        is_shelves,
+      </if>
+      <if test="countryOfOrigin != null" >
+        country_of_origin,
+      </if>
+      <if test="distribution != null" >
+        distribution,
+      </if>
+      <if test="otherName != null" >
+        other_name,
+      </if>
+      <if test="curingDescription != null" >
+        curing_description,
+      </if>
+      <if test="distributionDescription != null" >
+        distribution_description,
+      </if>
+      <if test="images != null" >
+        images,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseName != null" >
+        #{chineseName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="latinName != null" >
+        #{latinName,jdbcType=VARCHAR},
+      </if>
+      <if test="salesName != null" >
+        #{salesName,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null" >
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="branchesLength != null" >
+        #{branchesLength,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="specs != null" >
+        #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="inventory != null" >
+        #{inventory,jdbcType=INTEGER},
+      </if>
+      <if test="isShelves != null" >
+        #{isShelves,jdbcType=CHAR},
+      </if>
+      <if test="countryOfOrigin != null" >
+        #{countryOfOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="distribution != null" >
+        #{distribution,jdbcType=VARCHAR},
+      </if>
+      <if test="otherName != null" >
+        #{otherName,jdbcType=VARCHAR},
+      </if>
+      <if test="curingDescription != null" >
+        #{curingDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionDescription != null" >
+        #{distributionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        #{images,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thor.pawPrint.bean.entity.GoodsDO" >
+    update goods
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="chineseName != null" >
+        chinese_name = #{chineseName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        english_name = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="latinName != null" >
+        latin_name = #{latinName,jdbcType=VARCHAR},
+      </if>
+      <if test="salesName != null" >
+        sales_name = #{salesName,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null" >
+        origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="branchesLength != null" >
+        branches_length = #{branchesLength,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="specs != null" >
+        specs = #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="inventory != null" >
+        inventory = #{inventory,jdbcType=INTEGER},
+      </if>
+      <if test="isShelves != null" >
+        is_shelves = #{isShelves,jdbcType=CHAR},
+      </if>
+      <if test="countryOfOrigin != null" >
+        country_of_origin = #{countryOfOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="distribution != null" >
+        distribution = #{distribution,jdbcType=VARCHAR},
+      </if>
+      <if test="otherName != null" >
+        other_name = #{otherName,jdbcType=VARCHAR},
+      </if>
+      <if test="curingDescription != null" >
+        curing_description = #{curingDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionDescription != null" >
+        distribution_description = #{distributionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        images = #{images,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.thor.pawPrint.bean.entity.GoodsDO" >
+    update goods
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      code = #{code,jdbcType=VARCHAR},
+      chinese_name = #{chineseName,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      latin_name = #{latinName,jdbcType=VARCHAR},
+      sales_name = #{salesName,jdbcType=VARCHAR},
+      origin = #{origin,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      branches_length = #{branchesLength,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      specs = #{specs,jdbcType=VARCHAR},
+      inventory = #{inventory,jdbcType=INTEGER},
+      is_shelves = #{isShelves,jdbcType=CHAR},
+      country_of_origin = #{countryOfOrigin,jdbcType=VARCHAR},
+      distribution = #{distribution,jdbcType=VARCHAR},
+      other_name = #{otherName,jdbcType=VARCHAR},
+      curing_description = #{curingDescription,jdbcType=VARCHAR},
+      distribution_description = #{distributionDescription,jdbcType=VARCHAR},
+      images = #{images,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thor.pawPrint.bean.entity.GoodsDO" >
+    update goods
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      code = #{code,jdbcType=VARCHAR},
+      chinese_name = #{chineseName,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      latin_name = #{latinName,jdbcType=VARCHAR},
+      sales_name = #{salesName,jdbcType=VARCHAR},
+      origin = #{origin,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR},
+      branches_length = #{branchesLength,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      specs = #{specs,jdbcType=VARCHAR},
+      inventory = #{inventory,jdbcType=INTEGER},
+      is_shelves = #{isShelves,jdbcType=CHAR},
+      country_of_origin = #{countryOfOrigin,jdbcType=VARCHAR},
+      distribution = #{distribution,jdbcType=VARCHAR},
+      other_name = #{otherName,jdbcType=VARCHAR},
+      curing_description = #{curingDescription,jdbcType=VARCHAR},
+      distribution_description = #{distributionDescription,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--业务sql-->
+  <select id="selectBatchByPrimaryKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List" />
+    from goods
+    <where>
+      <if test="ids != null and ids.size > 0">
+        and id in
+        <foreach item="idItem" collection="ids" open="(" separator="," close=")">
+          #{idItem,jdbcType=INTEGER}
+        </foreach>
+      </if>
+    </where>
+  </select>
+</mapper>

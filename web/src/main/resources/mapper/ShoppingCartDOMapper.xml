@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thor.pawPrint.dao.mapper.ShoppingCartDOMapper" >
+  <resultMap id="BaseResultMap" type="com.thor.pawPrint.bean.entity.ShoppingCartDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit_price" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_create, gmt_modify, number, user_id, goods_id, num, unit_price, total_price, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shopping_cart
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shopping_cart
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thor.pawPrint.bean.entity.ShoppingCartDO" >
+    insert into shopping_cart (id, gmt_create, gmt_modify, 
+      number, user_id, goods_id, 
+      num, unit_price, total_price, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{num,jdbcType=INTEGER}, #{unitPrice,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thor.pawPrint.bean.entity.ShoppingCartDO" >
+    insert into shopping_cart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thor.pawPrint.bean.entity.ShoppingCartDO" >
+    update shopping_cart
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thor.pawPrint.bean.entity.ShoppingCartDO" >
+    update shopping_cart
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      number = #{number,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--业务sql-->
+  <select id="selectTotalMoneyByShoppingCartNumber" resultType="double">
+    select
+    sum(total_price)
+    from shopping_cart
+    <where>
+      <if test="numbers != null and numbers.length > 0">
+        and number in
+        <foreach item="item" collection="numbers" open="(" separator="," close=")">
+          #{item,jdbcType=VARCHAR}
+        </foreach>
+      </if>
+    </where>
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_cart
+    where user_id = #{userId,jdbcType=INTEGER}
+    and status = 'NO_ORDER'
+  </select>
+  <update id="updateBatchStatusByNumber">
+    update shopping_cart
+    set status = #{status,jdbcType=VARCHAR}
+    <where>
+      <if test="numbers == null or numbers.length == 0">
+        and id = -1
+      </if>
+      <if test="numbers != null and numbers.length > 0">
+        and number in
+        <foreach item="item" collection="numbers" open="(" separator="," close=")">
+          #{item,jdbcType=VARCHAR}
+        </foreach>
+      </if>
+    </where>
+  </update>
+</mapper>

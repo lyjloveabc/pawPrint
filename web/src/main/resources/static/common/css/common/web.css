@@ -1,0 +1,140 @@
+body {
+    font-family: "Microsoft YaHei", serif;
+    font-size: 12px;
+    background: none;
+    color: #8ca5bb;
+    min-width: 1190px;
+}
+
+/*div {*/
+/*text-align: center;*/
+/*}*/
+
+thead {
+    background-color: #e0e4ff;
+}
+
+th {
+    text-align: center;
+}
+
+/*input:focus {
+    outline: none;
+}
+
+input::-webkit-input-placeholder {
+    color: #c1d2e1 !important;
+}
+
+input:-moz-placeholder {
+    color: #c1d2e1 !important;
+}
+
+input::-moz-placeholder {
+    color: #c1d2e1 !important;
+}
+
+input:-ms-input-placeholder {
+    color: #c1d2e1 !important;
+}*/
+
+select:focus {
+    outline: none;
+}
+
+span {
+    font-size: 12px;
+}
+
+a {
+    font-weight: bold;
+    color: #8ca5bb;
+    text-decoration: none;
+    text-align: center;
+}
+
+a:hover {
+    color: #02aadb;
+    text-decoration: none;
+    text-align: center;
+}
+
+.w1190 {
+    width: 1152px;
+}
+
+.left-navigate-leftover {
+    width: 88%;
+    float: left;
+}
+
+.conspicuous {
+    color: #EA6343;
+}
+
+.main-content {
+    min-height: 540px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-top-140 {
+    margin-top: 140px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
+
+.opacity_100 {
+    opacity: 1 !important;
+}
+
+.font-18 {
+    font-size: 18px !important;
+}
+
+.text-transform-uppercase {
+    text-transform: uppercase !important;
+}
+
+.text-transform-lowercase {
+    text-transform: lowercase !important;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.master-key-star {
+    margin-left: 3px;
+    color: red;
+}
+
+.width-50percent {
+    width: 50%;
+}
+
+.width-300 {
+    width: 300px;
+}
+
+.height-30 {
+    height: 30px;
+}
+
+.height-70 {
+    height: 70px;
+}
+
+.resize-none {
+    resize: none;
+}

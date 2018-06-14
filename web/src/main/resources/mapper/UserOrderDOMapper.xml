@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thor.pawPrint.dao.mapper.UserOrderDOMapper" >
+  <resultMap id="BaseResultMap" type="com.thor.pawPrint.bean.entity.UserOrderDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="shopping_cart_numbers" property="shoppingCartNumbers" jdbcType="VARCHAR" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="actual_paid_money" property="actualPaidMoney" jdbcType="DECIMAL" />
+    <result column="pay_way" property="payWay" jdbcType="VARCHAR" />
+    <result column="gmt_pay" property="gmtPay" jdbcType="TIMESTAMP" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_create, gmt_modify, number, user_id, shopping_cart_numbers, total_price, 
+    actual_paid_money, pay_way, gmt_pay, trade_no, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thor.pawPrint.bean.entity.UserOrderDO" >
+    insert into user_order (id, gmt_create, gmt_modify, 
+      number, user_id, shopping_cart_numbers, 
+      total_price, actual_paid_money, pay_way, 
+      gmt_pay, trade_no, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{shoppingCartNumbers,jdbcType=VARCHAR}, 
+      #{totalPrice,jdbcType=DECIMAL}, #{actualPaidMoney,jdbcType=DECIMAL}, #{payWay,jdbcType=VARCHAR}, 
+      #{gmtPay,jdbcType=TIMESTAMP}, #{tradeNo,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.thor.pawPrint.bean.entity.UserOrderDO" >
+    insert into user_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="shoppingCartNumbers != null" >
+        shopping_cart_numbers,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="actualPaidMoney != null" >
+        actual_paid_money,
+      </if>
+      <if test="payWay != null" >
+        pay_way,
+      </if>
+      <if test="gmtPay != null" >
+        gmt_pay,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingCartNumbers != null" >
+        #{shoppingCartNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="actualPaidMoney != null" >
+        #{actualPaidMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtPay != null" >
+        #{gmtPay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thor.pawPrint.bean.entity.UserOrderDO" >
+    update user_order
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shoppingCartNumbers != null" >
+        shopping_cart_numbers = #{shoppingCartNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="actualPaidMoney != null" >
+        actual_paid_money = #{actualPaidMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payWay != null" >
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtPay != null" >
+        gmt_pay = #{gmtPay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeNo != null" >
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thor.pawPrint.bean.entity.UserOrderDO" >
+    update user_order
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      number = #{number,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      shopping_cart_numbers = #{shoppingCartNumbers,jdbcType=VARCHAR},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      actual_paid_money = #{actualPaidMoney,jdbcType=DECIMAL},
+      pay_way = #{payWay,jdbcType=VARCHAR},
+      gmt_pay = #{gmtPay,jdbcType=TIMESTAMP},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

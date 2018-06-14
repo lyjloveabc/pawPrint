@@ -1,0 +1,69 @@
+html, body {
+    height: 100%;
+    font-size: 14px;
+}
+
+a:hover {
+    /* 指鼠标在链接 */
+    text-decoration: none;
+}
+
+a:active {
+    /* 指正在点的链接 */
+    text-decoration: none;
+}
+
+.mobile-panel-content {
+    min-height: 480px;
+    padding: 20px 20px 100px;
+}
+
+.mobile-panel-content-full-screen {
+    min-height: 480px;
+    padding-bottom: 100px;
+}
+
+.mobile-panel-footer {
+    padding-top: 50px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.mobile-countCon1, .mobile-countCon2 {
+    width: 25px;
+    height: 30px;
+    overflow: hidden;
+    border: none;
+    text-align: center;
+    float: left;
+    background-color: #EEF3F6;
+    font-size: 20px;
+    color: #000000;
+    outline: none;
+    line-height: 26px;
+    cursor: pointer;
+}
+
+.mobile-countCon3 {
+    width: 45px;
+    height: 30px;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    border-left: 1px solid #E6E5E5;
+    border-right: 1px solid #E6E5E5;
+    border-top: none;
+    border-bottom: none;
+    font-size: 14px;
+    display: block;
+}
+
+.mobile-goods-bottom {
+    width: 100%;
+    background: #000;
+    position: fixed;
+    left: 0;
+    bottom: 9%;
+    z-index: 99;
+    padding: 10px;
+}

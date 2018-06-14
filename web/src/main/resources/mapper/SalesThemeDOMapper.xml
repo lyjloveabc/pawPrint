@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thor.pawPrint.dao.mapper.SalesThemeDOMapper" >
+  <resultMap id="BaseResultMap" type="com.thor.pawPrint.bean.entity.SalesThemeDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="sales_name" property="salesName" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="goods_ids" property="goodsIds" jdbcType="VARCHAR" />
+    <result column="is_shelves" property="isShelves" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_create, gmt_modify, code, sales_name, image, goods_ids, is_shelves
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sales_theme
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sales_theme
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thor.pawPrint.bean.entity.SalesThemeDO" >
+    insert into sales_theme (id, gmt_create, gmt_modify, 
+      code, sales_name, image, 
+      goods_ids, is_shelves)
+    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR}, #{salesName,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{goodsIds,jdbcType=VARCHAR}, #{isShelves,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thor.pawPrint.bean.entity.SalesThemeDO" >
+    insert into sales_theme
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="salesName != null" >
+        sales_name,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="goodsIds != null" >
+        goods_ids,
+      </if>
+      <if test="isShelves != null" >
+        is_shelves,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="salesName != null" >
+        #{salesName,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsIds != null" >
+        #{goodsIds,jdbcType=VARCHAR},
+      </if>
+      <if test="isShelves != null" >
+        #{isShelves,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thor.pawPrint.bean.entity.SalesThemeDO" >
+    update sales_theme
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="salesName != null" >
+        sales_name = #{salesName,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsIds != null" >
+        goods_ids = #{goodsIds,jdbcType=VARCHAR},
+      </if>
+      <if test="isShelves != null" >
+        is_shelves = #{isShelves,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thor.pawPrint.bean.entity.SalesThemeDO" >
+    update sales_theme
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      code = #{code,jdbcType=VARCHAR},
+      sales_name = #{salesName,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      goods_ids = #{goodsIds,jdbcType=VARCHAR},
+      is_shelves = #{isShelves,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--业务sql-->
+  <select id="selectAllShelvesSalesTheme" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sales_theme
+    where is_shelves = '1'
+  </select>
+</mapper>

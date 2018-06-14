@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thor.pawPrint.dao.mapper.WeChatConfigDOMapper" >
+  <resultMap id="BaseResultMap" type="com.thor.pawPrint.bean.entity.WeChatConfigDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="app_secret" property="appSecret" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="encoding_AES_key" property="encodingAesKey" jdbcType="VARCHAR" />
+    <result column="access_token" property="accessToken" jdbcType="VARCHAR" />
+    <result column="is_using" property="isUsing" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_create, gmt_modify, app_id, app_secret, url, token, encoding_AES_key, access_token, 
+    is_using
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from we_chat_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from we_chat_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thor.pawPrint.bean.entity.WeChatConfigDO" >
+    insert into we_chat_config (id, gmt_create, gmt_modify, 
+      app_id, app_secret, url, 
+      token, encoding_AES_key, access_token, 
+      is_using)
+    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{encodingAesKey,jdbcType=VARCHAR}, #{accessToken,jdbcType=VARCHAR}, 
+      #{isUsing,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thor.pawPrint.bean.entity.WeChatConfigDO" >
+    insert into we_chat_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="appSecret != null" >
+        app_secret,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="encodingAesKey != null" >
+        encoding_AES_key,
+      </if>
+      <if test="accessToken != null" >
+        access_token,
+      </if>
+      <if test="isUsing != null" >
+        is_using,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null" >
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="encodingAesKey != null" >
+        #{encodingAesKey,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsing != null" >
+        #{isUsing,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thor.pawPrint.bean.entity.WeChatConfigDO" >
+    update we_chat_config
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null" >
+        app_secret = #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="encodingAesKey != null" >
+        encoding_AES_key = #{encodingAesKey,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        access_token = #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsing != null" >
+        is_using = #{isUsing,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thor.pawPrint.bean.entity.WeChatConfigDO" >
+    update we_chat_config
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      app_id = #{appId,jdbcType=VARCHAR},
+      app_secret = #{appSecret,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      encoding_AES_key = #{encodingAesKey,jdbcType=VARCHAR},
+      access_token = #{accessToken,jdbcType=VARCHAR},
+      is_using = #{isUsing,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--业务sql-->
+  <select id="selectIsUsing" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from we_chat_config
+    where is_using = '1'
+  </select>
+</mapper>
